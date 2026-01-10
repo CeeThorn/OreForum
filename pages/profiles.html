@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/profiles.css">
+
+</head>
+<body>
+    <h1>Character Profiles</h1>
+    <img src="/images/pro.jpg" alt="" class="banner-image">
+    <div id="profiles-container">
+    <script>
+        async function loadProfiles() {
+        const response = await fetch('/api/profiles');
+        const profiles = await response.json();
+
+        const container = document.getElementById('profiles-container'); // locates container by id
+
+        profiles.forEach(profile => {
+            const card = document.createElement('div');
+            card.className = 'profile-card';
+            card.innerHTML = `
+                <h2>${profile.name}</h2>
+                <p>Age: ${profile.age}</p>
+                `;
+            container.appendChild(card);
+    });
+    }
+        loadProfiles();
+    </script>
+    
+</body>
+</html>
