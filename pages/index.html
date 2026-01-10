@@ -3,18 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>OForum</title>
+
+   
+    <link rel="stylesheet" href="/styles/index.css">
 </head>
+
 <body>
 
-     <div class="button-group">
-            <button type="create" id="submit-button" class="submit-button">
-                Submit Character Profile
-            </button>
+    <button onclick="location.href='/login.html'" class="login-button">
+    <img src="login.png" alt="Login" />
+</button>
 
-            <button type="store" id="reset-button" class="submit-button">
-                Reset Form
-            </button>
-    
+
+
+    <h1>OForum</h1>
+    <p>Store your documents here!</p>
+
+   <div class="button-group">
+    <button
+        type="button"
+        id="create-button"
+        class="s-button"
+        onclick="location.href='forum.html'">
+        Create Character Profile
+    </button>
+
+        <button 
+        type="button" 
+        id="view-button" 
+        class="s-button"
+        onclick="location.href='profiles.html'">
+            View Character Profiles
+        </button>
+    </div>
+
 </body>
 </html>
