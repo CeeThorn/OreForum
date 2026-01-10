@@ -82,27 +82,32 @@
         <fieldset class="'pt-4 form-group-spacing">
             <h2 class="image-upload">Upload an Image</h2>
             <input type="file" id="file" accept="image/*" multiple>
+            <input type="text" id="comments" placeholder="File Comments" class="input-field">
         </fieldset>
         
-        
-        <footer class="flex-col-spacing">
-            
-            <p id="message-box" class="hidden"></p>
 
-          <div class="submit-button-group">
-            <button type="submit" id="submit-button" class="submit-button">
-                Submit Character Profile
-            </button>
+        <div class="submit-button-group">
+        <button type="submit" id="submit-button" class="submit-button">
+            Submit Character Profile
+        </button>
 
-            <button type="reset" id="reset-button" class="submit-button">
-                Reset Form
-            </button>
-            </div>
+        <button type="reset" id="reset-button" class="submit-button">
+            Reset Form
+        </button>
+        </div>
 
-
-        </footer>
 
     </form>
+
+    <script>
+        document.getElementById("character-form").addEventListener("submit", function(e){
+            e.preventDefault(); //Prevents HTML from refreshing the page 
+            const userFile = document.getElementById("file").files;
+            const userComments = document.getElementById("comments").value;
+
+            new FormData
+        })
+    </script>
 
     
 </body>
