@@ -1,31 +1,30 @@
-document.getElementById('character-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
+const form = document.getElementById("character-form");
 
-const profile = {
-        name: document.getElementById('name').value,
-        age: document.getElementById('age').value,
-        gender: document.getElementById('gender').value,
-        height: document.getElementById('height').value,
-        birthday: document.getElementById('birthday').value,
-        background: document.getElementById('background').value,
-        relationship: document.getElementById('relationship').value,
-        abilities: document.getElementById('abilities').value,
-        imageFile: document.getElementById('file').files[0] ? document.getElementById('file').files[0].name : ''
-    };
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(form);
+
+  const character = {
+    id: crypto.randomUUID(),
+    name: formData.get("name"),
+    age: formData.get("age"),
+    gender: formData.get("gender"),
+    height: formData.get("height"),
+    birthday: formData.get("birthday"),
+    background: formData.get("background"),
+    relationship: formData.get("relationship"),
+    abilities: formData.get("abilities"),
+    createdAt: new Date().toISOString(),
+  };
 
 
-const response = await fetch('/api/profiles', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(profile)
+  const existing = JSON.parse(localStorage.getItem("characters")) || [];
 
-});
-    if (response.ok) {
+  existing.push(character);
 
-        window.location.href = '/profiles.html';
-    } else {
-        alert('Failed to create profile.');
-    }
+  localStorage.setItem("characters", JSON.stringify(existing));
+
+ 
+  window.location.href = "index.html";
 });

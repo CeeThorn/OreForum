@@ -9,14 +9,19 @@
 </head>
 <body>
     <h1>Character Profiles</h1>
-    <img src="/images/pro.jpg" alt="" class="banner-image">
+    
     <div id="profiles-container">
     <script>
-        async function loadProfiles() {
-        const response = await fetch('/api/profiles');
-        const profiles = await response.json();
+       
+     function loadProfiles(){  
 
-        const container = document.getElementById('profiles-container'); // locates container by id
+        const container = document.getElementById('profiles-container'); 
+
+           const profiles = JSON.parse(localStorage.getItem("characters")) || [];
+
+           if(profiles.length === 0 ){
+            return;
+           }
 
         profiles.forEach(profile => {
             const card = document.createElement('div');
