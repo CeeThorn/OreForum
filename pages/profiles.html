@@ -1,40 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/styles/profiles.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character Profiles</title>
+  <link rel="stylesheet" href="/styles/profiles.css">
 </head>
 <body>
-    <h1>Character Profiles</h1>
-    
-    <div id="profiles-container">
-    <script>
-       
-     function loadProfiles(){  
 
-        const container = document.getElementById('profiles-container'); 
+<h1>Character Profiles</h1>
 
-           const profiles = JSON.parse(localStorage.getItem("characters")) || [];
+<div class="container">
+  <div id="profiles-container" class="card__container"></div>
+</div>
 
-           if(profiles.length === 0 ){
-            return;
-           }
+<script>
+function loadProfiles() {
+  const container = document.getElementById('profiles-container');
+  const profiles = JSON.parse(localStorage.getItem("characters")) || [];
 
-        profiles.forEach(profile => {
-            const card = document.createElement('div');
-            card.className = 'profile-card';
-            card.innerHTML = `
-                <h2>${profile.name}</h2>
-                <p>Age: ${profile.age}</p>
-                `;
-            container.appendChild(card);
-    });
-    }
-        loadProfiles();
-    </script>
-    
+  if (profiles.length === 0) return;
+
+  profiles.forEach(profile => {
+    const article = document.createElement('article');
+    article.className = 'card__article';
+
+    const createdDate = profile.createdAt
+      ? new Date(profile.createdAt).toLocaleDateString()
+      : 'Unknown date';
+
+    article.innerHTML = `
+      <img 
+        src="/images/dark.jpg"
+        class="card__img"
+        alt="Profile image"
+      />
+
+      <div class="card__data">
+        <span class="card__description">
+          Created on ${createdDate}
+        </span>
+
+        <h2 class="card__title">
+          ${profile.name}
+        </h2>
+
+        <a href="#" class="card__button">View More</a>
+      </div>
+    `;
+
+    container.appendChild(article);
+  });
+}
+
+loadProfiles();
+</script>
+
 </body>
 </html>
