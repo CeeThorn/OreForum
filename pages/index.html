@@ -1,42 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OForum</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OForum</title>
+  
 
-   
-    <link rel="stylesheet" href="/styles/index.css">
+   <style>
+    /* Reset */
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Fullscreen background + body setup */
+    body {
+        min-height: 100vh;
+        background-image: url("/images/flowers.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+    }
+
+    /* LEFT CONTENT PANEL - fixed overlay */
+    .content {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        height: 100vh;
+        width: 40vw;
+        padding-left: 5rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1.25rem;
+
+        z-index: 10;
+        color: white;
+    }
+
+    /* Optional readability gradient behind text */
+    .content::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            90deg,
+            rgba(0,0,0,0.55),
+            rgba(0,0,0,0)
+        );
+        z-index: -1;
+    }
+
+    /* Typography */
+    h1 {
+        margin-bottom: 0.25rem;
+        font-size: 3rem;
+    }
+
+    p {
+        margin-bottom: 1.25rem;
+        color: #e5e7eb;
+        max-width: 420px;
+    }
+
+    /* Buttons */
+    .button-group {
+        display: flex;
+        gap: 1.5rem;
+        margin-top: 0.75rem;
+    }
+
+    .s-button {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 9999px; /* pill shape */
+        cursor: pointer;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    /* Primary / Secondary colors for buttons */
+    .button-group .s-button:first-child {
+        background-color: #4f46e5;
+        color: white;
+    }
+
+    .button-group .s-button:last-child {
+        background-color: #e5e7eb;
+        color: #111827;
+    }
+
+    .s-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Fullscreen Spline canvas */
+    canvas {
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -2;
+    }
+
+    /* Login button stays top-right */
+    .login-button {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+
+        border: none;
+        background: none;
+        padding: 0;
+        cursor: pointer;
+        z-index: 1000;
+    }
+
+    .login-button img {
+        width: 40px;
+        height: 40px;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .login-button:hover img {
+        transform: scale(1.1);
+        opacity: 0.85;
+    }
+  </style>
 </head>
 
 <body>
 
-    <button onclick="location.href='/login.html'" class="login-button">
-    <img src="login.png" alt="Login" />
-</button>
+  
+  <canvas id="canvas3d"></canvas>
 
-
-
+  <!-- Overlay UI -->
+  <div class="content">
+  <div class="left-panel">
     <h1>OForum</h1>
     <p>Store your documents here!</p>
 
-   <div class="button-group">
-    <button
-        type="button"
-        id="create-button"
+    <div class="button-group">
+      <button
         class="s-button"
         onclick="location.href='forum.html'">
         Create Character Profile
-    </button>
+      </button>
 
-        <button 
-        type="button" 
-        id="view-button" 
+      <button
         class="s-button"
         onclick="location.href='profiles.html'">
-            View Character Profiles
-        </button>
+        View Character Profiles
+      </button>
     </div>
+  </div>
+</div>
+
+
+  <!-- Spline -->
+  <script type="module">
+    import { Application } from "https://unpkg.com/@splinetool/runtime@1.0.60/build/runtime.js";
+
+    const canvas = document.getElementById("canvas3d");
+    const app = new Application(canvas);
+
+    app.load("https://prod.spline.design/AFYKhAxcZZ7BT8i4/scene.splinecode");
+  </script>
 
 </body>
 </html>
