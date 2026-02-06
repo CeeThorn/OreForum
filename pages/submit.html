@@ -81,8 +81,17 @@
         </fieldset>
 
         <fieldset class="'pt-4 form-group-spacing">
-            <h2 class="image-upload">Upload an Image</h2>
+            <h2 class="image-upload" name="uploadedImages">Upload an Image</h2>
             <input type="file" id="file" accept="image/*" multiple>
+
+            <h2 class="view-image-">View Images</h2>
+            <input type="file" id="file" accept="image/*" multiple>
+
+
+            <select id="cover-select" name="coverImage" class="input-field">
+        <option value="light.jpg">Light </option>
+        <option value="dark.jpg">Dark </option>
+       </select>
             <input type="text" id="comments" placeholder="File Comments" class="input-field">
         </fieldset>
         
@@ -100,15 +109,8 @@
 
     </form>
 
-    <script>
-        document.getElementById("character-form").addEventListener("submit", function(e){
-            e.preventDefault(); //Prevents HTML from refreshing the page 
-            const userFile = document.getElementById("file").files;
-            const userComments = document.getElementById("comments").value;
+    
 
-            new FormData
-        })
-    </script>
 
     
 </body>

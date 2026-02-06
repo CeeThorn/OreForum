@@ -1,68 +1,114 @@
-       body {
-
+/* Reset */
+html, body {
     margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Fullscreen background + left layout */
+body {
     min-height: 100vh;
 
     background-image: url("/images/flowers.jpg");
-    background-size: cover;        /* fills screen */
-    background-position: center;   /* keeps it centered */
-    background-repeat: no-repeat;  /* no tiling */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
-         
-            
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
 
-            font-family: Arial, sans-serif;
-            
-        }
+/* LEFT CONTENT PANEL - fixed overlay */
+.content {
+    position: fixed;       /* key fix: overlay above canvas */
+    top: 0;
+    left: 0;
 
-        h1 {
-            margin-bottom: 0.5rem;
-            font-size: 3rem;
-        }
+    height: 100vh;
+    width: 40vw;
+    padding-left: 5rem;
 
-        p {
-            margin-bottom: 2rem;
-            color: #0e0d0d;
-        }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.25rem;
 
-        .button-group {
-            display: flex;
-            gap: 1.5rem;
-        }
+    z-index: 10;
+    color: white;
+}
 
-        .s-button {
-            padding: 1rem 1.75rem;
-            font-size: 1rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-        }
+/* Optional readability gradient behind text */
+.content::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(0,0,0,0.55),
+        rgba(0,0,0,0)
+    );
+    z-index: -1;
+}
 
-        /* Primary button */
-        #submit-button {
-            background-color: #4f46e5; /* indigo */
-            color: white;
-        }
+/* Typography */
+h1 {
+    margin-bottom: 0.25rem;
+    font-size: 3rem;
+}
 
-        /* Secondary button */
-        #reset-button {
-            background-color: #e5e7eb; /* light gray */
-            color: #111827;
-        }
+p {
+    margin-bottom: 1.25rem;
+    color: #e5e7eb;
+    max-width: 420px;
+}
 
-        .s-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-        }
+/* Buttons */
+.button-group {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.75rem;
+}
 
-        .login-button {
-    position: fixed;       /* stays in top-right even when scrolling */
+/* Pill-shaped buttons */
+.s-button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Primary / Secondary colors for buttons */
+.button-group .s-button:first-child {
+    background-color: #4f46e5;
+    color: white;
+}
+
+.button-group .s-button:last-child {
+    background-color: #e5e7eb;
+    color: #111827;
+}
+
+.s-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Fullscreen Spline canvas */
+canvas {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+}
+
+/* Login button stays top-right */
+.login-button {
+    position: fixed;
     top: 20px;
     right: 20px;
 
@@ -70,7 +116,7 @@
     background: none;
     padding: 0;
     cursor: pointer;
-    z-index: 1000;         /* keeps it above other elements */
+    z-index: 1000;
 }
 
 .login-button img {

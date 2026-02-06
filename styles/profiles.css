@@ -45,6 +45,13 @@ img {
   height: auto;
 }
 
+.profiles-title {
+  text-align: center;
+  font-size: 2rem;
+  margin: 2rem auto 1rem auto;
+  color: var(--title-color);
+}
+
 /*=============== CARD ===============*/
 .container {
   display: grid;
@@ -65,6 +72,7 @@ img {
 
 .card__img {
   width: 328px;
+  height: 600px;
   border-radius: 1.5rem;
 }
 
@@ -162,6 +170,29 @@ img {
   50% {
     overflow: hidden;
   }
+}
+
+/*Profile Button */
+.fixed-home-btn {
+  position: fixed;    
+  bottom: 2rem;        
+  left: 2rem;          
+  z-index: 1000;       
+}
+
+.home-button {
+  padding: 0.8rem 1.5rem;
+  background-color: var(--first-color); 
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.home-button:hover {
+  transform: scale(1.1); 
 }
 
 /*=============== BREAKPOINTS ===============*/
