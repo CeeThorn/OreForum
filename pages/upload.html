@@ -6,37 +6,35 @@
     <title>Character Submission Form</title>
     
     <link rel="stylesheet" href="/styles/forum.css">
-    
-    <script src="/scripts/forum.js" defer></script>
+
     </head>
     <body class="bg-background min-h-screen py-10 px-4 sm:px-6 lg:px-8">
 
     <header class="header">
-        <h1>Character Submission</h1>
+        <h1>Character Creation</h1>
         <p>Create and save a new profile to your collection.</p>
     </header>
 
-    
     <form id="character-form" class="container space-y-6"> 
         
         <fieldset class="form-section form-group-spacing">
             <h2>Identity</h2>
             <div class="grid-layout">
                 
-                <label for="name" class="label">Full Name
-                    <input type="text" id="name" name="name" placeholder="Enter a name" required
-                           class="input-field">
+                <label for="name" class="label">First Name
+                    <input type="text" id="first_name" name="first_name" placeholder="Enter a first name" required class="input-field">
+                    <input type="text" id="last_name" name="last_name" placeholder="Enter a last name" required class="input-field">
                 </label>
                 
                 <label for="age" class="label">Age
-                    <input type="number" id="age" name="age" min=0 class="input-field" required>
+                    <input type="number" id="age" name="age" min=0 class="input-field" >
                 </label>
                 
                 <label class="label">Gender
-                    <select id="gender" name="gender" class="selection-field" required>
+                    <select id="gender" name="gender" class="selection-field" >
                         <option value="">--Please choose an option--</option>
-                        <option value="male">Man</option>
-                        <option value="female">Woman</option>
+                        <option value="Male">Man</option>
+                        <option value="Female">Woman</option>
                         <option value="N/A">N/A</option>
                         </select>
                 </label>
@@ -46,12 +44,6 @@
                            class="input-field">
                 </label>
             
-                <div class="col-span-2"> 
-                    <label for="birthday" class="label">Birthday
-                        <input type="date" id="birthday" name="birthday" required
-                               class="input-field">
-                    </label>
-                </div>
             </div>
         </fieldset>
 
@@ -64,10 +56,6 @@
                               class="input-field"></textarea>
             </label>
             
-            <label for="relationship" class="label form-group">Key Relationships
-                <textarea id="relationship" name="relationship" rows="4" placeholder="Describe relationships with other characters or entities."
-                              class="input-field"></textarea>
-            </label>
         </fieldset>
         
         
@@ -82,8 +70,7 @@
 
         <fieldset class="'pt-4 form-group-spacing">
             <h2 class="image-upload">Upload an Image</h2>
-            <input type="file" id="file" accept="image/*" multiple>
-            <input type="text" id="comments" placeholder="File Comments" class="input-field">
+            <input type="file" id="file" name="character-image" accept="image/*">
         </fieldset>
         
 
@@ -99,16 +86,8 @@
 
 
     </form>
-
-    <script>
-        document.getElementById("character-form").addEventListener("submit", function(e){
-            e.preventDefault(); //Prevents HTML from refreshing the page 
-            const userFile = document.getElementById("file").files;
-            const userComments = document.getElementById("comments").value;
-
-            new FormData
-        })
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/scripts/upload.js"></script>
 
     
 </body>
