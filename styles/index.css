@@ -1,4 +1,4 @@
-/* Reset */
+
 html, body {
     margin: 0;
     padding: 0;
@@ -6,7 +6,7 @@ html, body {
     height: 100%;
 }
 
-/* Fullscreen background + left layout */
+
 body {
     min-height: 100vh;
 
@@ -19,9 +19,9 @@ body {
     overflow: hidden;
 }
 
-/* LEFT CONTENT PANEL - fixed overlay */
+
 .content {
-    position: fixed;       /* key fix: overlay above canvas */
+    position: fixed;      
     top: 0;
     left: 0;
 
@@ -38,7 +38,7 @@ body {
     color: white;
 }
 
-/* Optional readability gradient behind text */
+
 .content::before {
     content: "";
     position: absolute;
@@ -51,7 +51,7 @@ body {
     z-index: -1;
 }
 
-/* Typography */
+
 h1 {
     margin-bottom: 0.25rem;
     font-size: 3rem;
@@ -63,14 +63,13 @@ p {
     max-width: 420px;
 }
 
-/* Buttons */
+
 .button-group {
     display: flex;
     gap: 1.5rem;
     margin-top: 0.75rem;
 }
 
-/* Pill-shaped buttons */
 .s-button {
     padding: 1rem 2rem;
     font-size: 1rem;
@@ -81,7 +80,7 @@ p {
     transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-/* Primary / Secondary colors for buttons */
+
 .button-group .s-button:first-child {
     background-color: #4f46e5;
     color: white;
@@ -97,7 +96,7 @@ p {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Fullscreen Spline canvas */
+
 canvas {
     position: fixed;
     inset: 0;
@@ -106,7 +105,7 @@ canvas {
     z-index: -2;
 }
 
-/* Login button stays top-right */
+
 .login-button {
     position: fixed;
     top: 20px;
